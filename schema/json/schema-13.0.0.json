@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "codeblind.ai/schema/flashlight/json/16.0.6/document",
+  "$id": "codeblind.ai/schema/flashlight/json/13.0.0/document",
   "$ref": "#/$defs/Document",
   "$defs": {
     "AlpmDbEntry": {
@@ -261,7 +261,12 @@
           "type": "array"
         },
         "options": {
-          "$ref": "#/$defs/KeyValues"
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
         },
         "path": {
           "type": "string"
@@ -273,49 +278,6 @@
       "type": "object",
       "required": [
         "ref"
-      ]
-    },
-    "CConanLockV2Entry": {
-      "properties": {
-        "ref": {
-          "type": "string"
-        },
-        "packageID": {
-          "type": "string"
-        },
-        "username": {
-          "type": "string"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "recipeRevision": {
-          "type": "string"
-        },
-        "packageRevision": {
-          "type": "string"
-        },
-        "timestamp": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "ref"
-      ]
-    },
-    "CPE": {
-      "properties": {
-        "cpe": {
-          "type": "string"
-        },
-        "source": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "cpe"
       ]
     },
     "ClassifierMatch": {
@@ -591,65 +553,6 @@
         "isConfigFile"
       ]
     },
-    "ELFSecurityFeatures": {
-      "properties": {
-        "symbolTableStripped": {
-          "type": "boolean"
-        },
-        "stackCanary": {
-          "type": "boolean"
-        },
-        "nx": {
-          "type": "boolean"
-        },
-        "relRO": {
-          "type": "string"
-        },
-        "pie": {
-          "type": "boolean"
-        },
-        "dso": {
-          "type": "boolean"
-        },
-        "safeStack": {
-          "type": "boolean"
-        },
-        "cfi": {
-          "type": "boolean"
-        },
-        "fortify": {
-          "type": "boolean"
-        }
-      },
-      "type": "object",
-      "required": [
-        "symbolTableStripped",
-        "nx",
-        "relRO",
-        "pie",
-        "dso"
-      ]
-    },
-    "ElfBinaryPackageNoteJsonPayload": {
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "vendor": {
-          "type": "string"
-        },
-        "system": {
-          "type": "string"
-        },
-        "sourceRepo": {
-          "type": "string"
-        },
-        "commit": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "ElixirMixLockEntry": {
       "properties": {
         "name": {
@@ -696,35 +599,6 @@
         "pkgHashExt"
       ]
     },
-    "Executable": {
-      "properties": {
-        "format": {
-          "type": "string"
-        },
-        "hasExports": {
-          "type": "boolean"
-        },
-        "hasEntrypoint": {
-          "type": "boolean"
-        },
-        "importedLibraries": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "elfSecurityFeatures": {
-          "$ref": "#/$defs/ELFSecurityFeatures"
-        }
-      },
-      "type": "object",
-      "required": [
-        "format",
-        "hasExports",
-        "hasEntrypoint",
-        "importedLibraries"
-      ]
-    },
     "File": {
       "properties": {
         "id": {
@@ -750,9 +624,6 @@
             "$ref": "#/$defs/FileLicense"
           },
           "type": "array"
-        },
-        "executable": {
-          "$ref": "#/$defs/Executable"
         }
       },
       "type": "object",
@@ -839,7 +710,12 @@
     "GoModuleBuildinfoEntry": {
       "properties": {
         "goBuildSettings": {
-          "$ref": "#/$defs/KeyValues"
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
         },
         "goCompiledVersion": {
           "type": "string"
@@ -928,13 +804,25 @@
     "JavaManifest": {
       "properties": {
         "main": {
-          "$ref": "#/$defs/KeyValues"
-        },
-        "sections": {
-          "items": {
-            "$ref": "#/$defs/KeyValues"
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
           },
-          "type": "array"
+          "type": "object"
+        },
+        "namedSections": {
+          "patternProperties": {
+            ".*": {
+              "patternProperties": {
+                ".*": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -1081,42 +969,6 @@
         "resolved",
         "integrity"
       ]
-    },
-    "JavascriptYarnLockEntry": {
-      "properties": {
-        "resolved": {
-          "type": "string"
-        },
-        "integrity": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "resolved",
-        "integrity"
-      ]
-    },
-    "KeyValue": {
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "key",
-        "value"
-      ]
-    },
-    "KeyValues": {
-      "items": {
-        "$ref": "#/$defs/KeyValue"
-      },
-      "type": "array"
     },
     "License": {
       "properties": {
@@ -1396,7 +1248,10 @@
           "type": "string"
         },
         "cpes": {
-          "$ref": "#/$defs/cpes"
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "purl": {
           "type": "string"
@@ -1428,9 +1283,6 @@
               "$ref": "#/$defs/CConanLockEntry"
             },
             {
-              "$ref": "#/$defs/CConanLockV2Entry"
-            },
-            {
               "$ref": "#/$defs/CocoaPodfileLockEntry"
             },
             {
@@ -1444,9 +1296,6 @@
             },
             {
               "$ref": "#/$defs/DpkgDbEntry"
-            },
-            {
-              "$ref": "#/$defs/ElfBinaryPackageNoteJsonPayload"
             },
             {
               "$ref": "#/$defs/ElixirMixLockEntry"
@@ -1474,9 +1323,6 @@
             },
             {
               "$ref": "#/$defs/JavascriptNpmPackageLockEntry"
-            },
-            {
-              "$ref": "#/$defs/JavascriptYarnLockEntry"
             },
             {
               "$ref": "#/$defs/LinuxKernelArchive"
@@ -1509,9 +1355,6 @@
               "$ref": "#/$defs/PythonPipfileLockEntry"
             },
             {
-              "$ref": "#/$defs/PythonPoetryLockEntry"
-            },
-            {
               "$ref": "#/$defs/RDescription"
             },
             {
@@ -1531,9 +1374,6 @@
             },
             {
               "$ref": "#/$defs/SwiftPackageManagerLockEntry"
-            },
-            {
-              "$ref": "#/$defs/WordpressPluginEntry"
             }
           ]
         }
@@ -1951,17 +1791,6 @@
         "index"
       ]
     },
-    "PythonPoetryLockEntry": {
-      "properties": {
-        "index": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "index"
-      ]
-    },
     "RDescription": {
       "properties": {
         "title": {
@@ -2085,6 +1914,7 @@
         "sourceRpm",
         "size",
         "vendor",
+        "modularityLabel",
         "files"
       ]
     },
@@ -2141,6 +1971,7 @@
         "sourceRpm",
         "size",
         "vendor",
+        "modularityLabel",
         "files"
       ]
     },
@@ -2308,29 +2139,6 @@
       "required": [
         "revision"
       ]
-    },
-    "WordpressPluginEntry": {
-      "properties": {
-        "pluginInstallDirectory": {
-          "type": "string"
-        },
-        "author": {
-          "type": "string"
-        },
-        "authorUri": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "pluginInstallDirectory"
-      ]
-    },
-    "cpes": {
-      "items": {
-        "$ref": "#/$defs/CPE"
-      },
-      "type": "array"
     },
     "licenses": {
       "items": {

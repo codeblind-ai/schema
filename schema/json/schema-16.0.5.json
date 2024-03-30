@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "codeblind.ai/schema/flashlight/json/16.0.6/document",
+  "$id": "codeblind.ai/schema/flashlight/json/16.0.5/document",
   "$ref": "#/$defs/Document",
   "$defs": {
     "AlpmDbEntry": {
@@ -629,26 +629,6 @@
         "pie",
         "dso"
       ]
-    },
-    "ElfBinaryPackageNoteJsonPayload": {
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "vendor": {
-          "type": "string"
-        },
-        "system": {
-          "type": "string"
-        },
-        "sourceRepo": {
-          "type": "string"
-        },
-        "commit": {
-          "type": "string"
-        }
-      },
-      "type": "object"
     },
     "ElixirMixLockEntry": {
       "properties": {
@@ -1444,9 +1424,6 @@
             },
             {
               "$ref": "#/$defs/DpkgDbEntry"
-            },
-            {
-              "$ref": "#/$defs/ElfBinaryPackageNoteJsonPayload"
             },
             {
               "$ref": "#/$defs/ElixirMixLockEntry"

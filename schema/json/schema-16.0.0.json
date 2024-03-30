@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "codeblind.ai/schema/flashlight/json/16.0.6/document",
+  "$id": "codeblind.ai/schema/flashlight/json/16.0.0/document",
   "$ref": "#/$defs/Document",
   "$defs": {
     "AlpmDbEntry": {
@@ -267,35 +267,6 @@
           "type": "string"
         },
         "context": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "ref"
-      ]
-    },
-    "CConanLockV2Entry": {
-      "properties": {
-        "ref": {
-          "type": "string"
-        },
-        "packageID": {
-          "type": "string"
-        },
-        "username": {
-          "type": "string"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "recipeRevision": {
-          "type": "string"
-        },
-        "packageRevision": {
-          "type": "string"
-        },
-        "timestamp": {
           "type": "string"
         }
       },
@@ -591,65 +562,6 @@
         "isConfigFile"
       ]
     },
-    "ELFSecurityFeatures": {
-      "properties": {
-        "symbolTableStripped": {
-          "type": "boolean"
-        },
-        "stackCanary": {
-          "type": "boolean"
-        },
-        "nx": {
-          "type": "boolean"
-        },
-        "relRO": {
-          "type": "string"
-        },
-        "pie": {
-          "type": "boolean"
-        },
-        "dso": {
-          "type": "boolean"
-        },
-        "safeStack": {
-          "type": "boolean"
-        },
-        "cfi": {
-          "type": "boolean"
-        },
-        "fortify": {
-          "type": "boolean"
-        }
-      },
-      "type": "object",
-      "required": [
-        "symbolTableStripped",
-        "nx",
-        "relRO",
-        "pie",
-        "dso"
-      ]
-    },
-    "ElfBinaryPackageNoteJsonPayload": {
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "vendor": {
-          "type": "string"
-        },
-        "system": {
-          "type": "string"
-        },
-        "sourceRepo": {
-          "type": "string"
-        },
-        "commit": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "ElixirMixLockEntry": {
       "properties": {
         "name": {
@@ -696,35 +608,6 @@
         "pkgHashExt"
       ]
     },
-    "Executable": {
-      "properties": {
-        "format": {
-          "type": "string"
-        },
-        "hasExports": {
-          "type": "boolean"
-        },
-        "hasEntrypoint": {
-          "type": "boolean"
-        },
-        "importedLibraries": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "elfSecurityFeatures": {
-          "$ref": "#/$defs/ELFSecurityFeatures"
-        }
-      },
-      "type": "object",
-      "required": [
-        "format",
-        "hasExports",
-        "hasEntrypoint",
-        "importedLibraries"
-      ]
-    },
     "File": {
       "properties": {
         "id": {
@@ -750,9 +633,6 @@
             "$ref": "#/$defs/FileLicense"
           },
           "type": "array"
-        },
-        "executable": {
-          "$ref": "#/$defs/Executable"
         }
       },
       "type": "object",
@@ -1068,21 +948,6 @@
       ]
     },
     "JavascriptNpmPackageLockEntry": {
-      "properties": {
-        "resolved": {
-          "type": "string"
-        },
-        "integrity": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "resolved",
-        "integrity"
-      ]
-    },
-    "JavascriptYarnLockEntry": {
       "properties": {
         "resolved": {
           "type": "string"
@@ -1428,9 +1293,6 @@
               "$ref": "#/$defs/CConanLockEntry"
             },
             {
-              "$ref": "#/$defs/CConanLockV2Entry"
-            },
-            {
               "$ref": "#/$defs/CocoaPodfileLockEntry"
             },
             {
@@ -1444,9 +1306,6 @@
             },
             {
               "$ref": "#/$defs/DpkgDbEntry"
-            },
-            {
-              "$ref": "#/$defs/ElfBinaryPackageNoteJsonPayload"
             },
             {
               "$ref": "#/$defs/ElixirMixLockEntry"
@@ -1474,9 +1333,6 @@
             },
             {
               "$ref": "#/$defs/JavascriptNpmPackageLockEntry"
-            },
-            {
-              "$ref": "#/$defs/JavascriptYarnLockEntry"
             },
             {
               "$ref": "#/$defs/LinuxKernelArchive"
@@ -1509,9 +1365,6 @@
               "$ref": "#/$defs/PythonPipfileLockEntry"
             },
             {
-              "$ref": "#/$defs/PythonPoetryLockEntry"
-            },
-            {
               "$ref": "#/$defs/RDescription"
             },
             {
@@ -1531,9 +1384,6 @@
             },
             {
               "$ref": "#/$defs/SwiftPackageManagerLockEntry"
-            },
-            {
-              "$ref": "#/$defs/WordpressPluginEntry"
             }
           ]
         }
@@ -1951,17 +1801,6 @@
         "index"
       ]
     },
-    "PythonPoetryLockEntry": {
-      "properties": {
-        "index": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "index"
-      ]
-    },
     "RDescription": {
       "properties": {
         "title": {
@@ -2307,23 +2146,6 @@
       "type": "object",
       "required": [
         "revision"
-      ]
-    },
-    "WordpressPluginEntry": {
-      "properties": {
-        "pluginInstallDirectory": {
-          "type": "string"
-        },
-        "author": {
-          "type": "string"
-        },
-        "authorUri": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "required": [
-        "pluginInstallDirectory"
       ]
     },
     "cpes": {

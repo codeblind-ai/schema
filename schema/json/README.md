@@ -1,12 +1,12 @@
 # JSON Schema
 
-This is the JSON schema for output from the JSON presenters (`syft packages <img> -o json`). The required inputs for defining the JSON schema are as follows:
+This is the JSON schema for output from the JSON presenters (`flashlight packages <img> -o json`). The required inputs for defining the JSON schema are as follows:
 
 - the value of `internal.JSONSchemaVersion` that governs the schema filename
-- the `Document` struct definition within `github.com/anchore/syft/syft/formats/syftjson/model/document.go` that governs the overall document shape
-- generated `AllTypes()` helper function within the `syft/internal/sourcemetadata` and `syft/internal/packagemetadata` packages
+- the `Document` struct definition within `github.com/codeblind-ai/flashlight/flashlight/formats/flashlightjson/model/document.go` that governs the overall document shape
+- generated `AllTypes()` helper function within the `flashlight/internal/sourcemetadata` and `flashlight/internal/packagemetadata` packages
 
-With regard to testing the JSON schema, integration test cases provided by the developer are used as examples to validate that JSON output from Syft is always valid relative to the `schema/json/schema-$VERSION.json` file.
+With regard to testing the JSON schema, integration test cases provided by the developer are used as examples to validate that JSON output from flashlight is always valid relative to the `schema/json/schema-$VERSION.json` file.
 
 ## Versioning
 
